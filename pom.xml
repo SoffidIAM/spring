@@ -11,7 +11,7 @@
   </licenses>
   <url>http://www.soffid.com/doc/console/${project.version}</url>
   <scm>
-        <connection>scm:git:ssh://git@github.com:SoffidIAM/spring.git</connection>
+        <connection>scm:git:ssh://git@github.com/SoffidIAM/spring.git</connection>
     <tag>HEAD</tag>
   </scm>
   <dependencies>
