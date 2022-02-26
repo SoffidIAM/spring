@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.springframework</groupId>
   <artifactId>spring</artifactId>
-  <version>1.2.7-soffid-1-SNAPSHOT</version>
+  <version>1.2.7-soffid-1</version>
   <licenses>
     <license>
       <name>GNU GPL Version 3.0</name>
@@ -12,7 +12,7 @@
   <url>http://www.soffid.com/doc/console/${project.version}</url>
   <scm>
         <connection>scm:git:ssh://git@github.com/SoffidIAM/spring.git</connection>
-    <tag>HEAD</tag>
+    <tag>spring-1.2.7-soffid-1</tag>
   </scm>
   <dependencies>
   	<dependency>
