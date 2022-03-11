@@ -89,7 +89,9 @@ public class TransactionInterceptor extends TransactionAspectSupport implements 
 		
 		// Create transaction if necessary.
 		TransactionInfo txInfo = createTransactionIfNecessary(invocation.getMethod(), targetClass);
-		boolean newTransaction = txInfo.getTransactionStatus().isNewTransaction();
+		boolean newTransaction = txInfo == null ||
+				txInfo.getTransactionStatus() == null ||
+				txInfo.getTransactionStatus().isNewTransaction();
 		Object retVal = null;
 		try {
 			TransactionInterceptor.anyTransaction.set(Boolean.TRUE);
