@@ -16,6 +16,8 @@
 
 package org.springframework.transaction.interceptor;
 
+import java.security.AccessController;
+import java.security.PrivilegedAction;
 import java.util.Properties;
 
 import org.aopalliance.intercept.MethodInterceptor;
@@ -80,7 +82,7 @@ public class TransactionInterceptor extends TransactionAspectSupport implements 
 
 	static ThreadLocal<Boolean> anyTransaction = new ThreadLocal<Boolean>();
 
-	public Object invoke(MethodInvocation invocation) throws Throwable {
+	public Object invoke(final MethodInvocation invocation) throws Throwable {
 		Boolean anyTransaction = TransactionInterceptor.anyTransaction.get();
 		// Work out the target class: may be <code>null</code>.
 		// The TransactionAttributeSource should be passed the target class
@@ -95,10 +97,19 @@ public class TransactionInterceptor extends TransactionAspectSupport implements 
 		Object retVal = null;
 		try {
 			TransactionInterceptor.anyTransaction.set(Boolean.TRUE);
-			// This is an around advice.
-			// Invoke the next interceptor in the chain.
-			// This will normally result in a target object being invoked.
-			retVal = invocation.proceed();
+			Object[] o = AccessController.doPrivileged(new PrivilegedAction<Object[]>() {
+				public Object[] run() {
+					try {
+						return new Object[] {invocation.proceed()};
+					} catch (Throwable th) {
+						return new Object[] {null, th};
+					}
+				}
+			});
+			if (o.length == 1)
+				retVal = o[0];
+			else
+				throw (Throwable) o[1];
 		}
 		catch (Throwable ex) {
 			// target invocation exception
