@@ -1,41 +1,41 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>org.springframework</groupId>
-  <artifactId>spring</artifactId>
-  <version>1.2.7-soffid-4-SNAPSHOT</version>
-  <licenses>
-    <license>
-      <name>GNU GPL Version 3.0</name>
-      <url>http://www.gnu.org/licenses/gpl.html</url>
-    </license>
-  </licenses>
-  <url>http://www.soffid.com/doc/console/${project.version}</url>
-  <scm>
-        <connection>scm:git:ssh://git@github.com/SoffidIAM/spring.git</connection>
-    <tag>HEAD</tag>
-  </scm>
-  <dependencies>
-  	<dependency>
-  		<groupId>org.springframework</groupId>
-  		<artifactId>spring</artifactId>
-  		<version>1.2.7</version>
-  	</dependency>
-  </dependencies>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.springframework</groupId>
+	<artifactId>spring</artifactId>
+	<version>1.2.7-soffid-4-SNAPSHOT</version>
+	<licenses>
+		<license>
+			<name>GNU GPL Version 3.0</name>
+			<url>http://www.gnu.org/licenses/gpl.html</url>
+		</license>
+	</licenses>
+	<url>http://www.soffid.com/doc/console/${project.version}</url>
+	<scm>
+		<connection>scm:git:ssh://git@github.com/SoffidIAM/spring.git</connection>
+		<tag>HEAD</tag>
+	</scm>
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring</artifactId>
+			<version>1.2.7</version>
+		</dependency>
+		<dependency>
+			<groupId>jakarta.platform</groupId>
+			<artifactId>jakarta.jakartaee-api</artifactId>
+			<version>10.0.0</version>
+			<scope>provided</scope>
+		</dependency>
+	</dependencies>
 	<build>
 		<plugins>
-                        <plugin>
-                                  <groupId>org.apache.maven.plugins</groupId>
-                                  <artifactId>maven-compiler-plugin</artifactId>
-                                  <configuration>
-                                      <source>1.8</source>
-                                      <target>1.8</target>
-                                  </configuration>
-                        </plugin>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<configuration>
-					<source>1.6</source>
-					<target>1.6</target>
+					<source>17</source>
+					<target>17</target>
 				</configuration>
 			</plugin>
 			<plugin>
@@ -61,16 +61,16 @@
 			</plugin>
 		</plugins>
 	</build>
-  <distributionManagement>
-    <repository>
-      <uniqueVersion>true</uniqueVersion>
-      <id>soffid-open</id>
-      <name>Soffid Maven repository</name>
-      <url>${soffid.deploy.url}</url>
-    </repository>
-    <site>
-      <id>soffid-open-site</id>
-      <name>Soffid Maven site repository</name>
-    </site>
-  </distributionManagement>
+	<distributionManagement>
+		<repository>
+			<uniqueVersion>true</uniqueVersion>
+			<id>soffid-open</id>
+			<name>Soffid Maven repository</name>
+			<url>${soffid.deploy.url}</url>
+		</repository>
+		<site>
+			<id>soffid-open-site</id>
+			<name>Soffid Maven site repository</name>
+		</site>
+	</distributionManagement>
 </project>

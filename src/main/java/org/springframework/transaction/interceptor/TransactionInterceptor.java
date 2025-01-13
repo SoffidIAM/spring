@@ -22,6 +22,7 @@ import java.util.Properties;
 
 import org.aopalliance.intercept.MethodInterceptor;
 import org.aopalliance.intercept.MethodInvocation;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.TransactionStatus;
 
@@ -114,6 +115,9 @@ public class TransactionInterceptor extends TransactionAspectSupport implements 
 		catch (Throwable ex) {
 			// target invocation exception
 			if (newTransaction || Boolean.TRUE != anyTransaction) {
+				if (txInfo.hasTransaction() &&  txInfo.getTransactionAttribute().rollbackOn(ex)) {
+					LogFactory.getLog(getClass()).warn("Rolling back transaction", ex);
+				}
 				doCloseTransactionAfterThrowing(txInfo, ex);
 			}
 			throw ex;
