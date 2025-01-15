@@ -29,6 +29,6 @@ public abstract class AbstractJmsMessageDrivenBean
 	implements MessageListener {
 	
 	// Empty: the purpose of this class is to ensure
-	// that subclasses implement javax.jms.MessageListener
+	// that subclasses implement jakarta.jms.MessageListener
 	
 } 

@@ -60,7 +60,7 @@ public abstract class AbstractStatelessSessionBean extends AbstractSessionBean {
 	 * as resource manager access isn't permitted there - but the BeanFactory
 	 * may require it.
 	 */
-	public void ejbCreate() throws CreateException {
+	public void createBean() {
 		loadBeanFactory();
 		onEjbCreate();
 	}
@@ -73,7 +73,7 @@ public abstract class AbstractStatelessSessionBean extends AbstractSessionBean {
 	 * to an ejbCreate() method.
 	 * @throws CreateException
 	 */
-	protected abstract void onEjbCreate() throws CreateException;
+	protected abstract void onEjbCreate() ;
 
 
 	/**
